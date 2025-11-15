@@ -17,6 +17,10 @@ ANNOTATED_IMAGE_DIR = OUTPUT_DIR / "01_annotated_images"
 OCR_JSON_DIR = OUTPUT_DIR / "02_output_json_easyocr"
 FEATURES_JSON_DIR = OUTPUT_DIR / "03_output_json_features"
 ANALYSIS_RESULT_DIR = OUTPUT_DIR / "04_analysis_results"
+# --- 5. GNN Dataset Output Paths ---
+GNN_DATASET_DIR = OUTPUT_DIR / "05_gnn_dataset_v2"
+GNN_NODES_DIR   = GNN_DATASET_DIR / "nodes"
+GNN_EDGES_DIR   = GNN_DATASET_DIR / "edges"
 
 # --- 3. 모델 및 스키마 ---
 CROSS_ENCODER_MODEL_NAME = 'bongsoo/albert-small-kor-cross-encoder-v1'
