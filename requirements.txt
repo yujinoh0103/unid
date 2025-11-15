@@ -1,0 +1,9 @@
+matplotlib
+tqdm
+torch
+numpy
+pandas
+seaborn
+easyocr
+sentence-transformers
+torch-geometric

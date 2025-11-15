@@ -1,0 +1,6 @@
+*.pt
+
+train_valid/
+*.json
+*.jpg
+output/
