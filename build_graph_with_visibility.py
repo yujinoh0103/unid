@@ -9,6 +9,9 @@ from pathlib import Path
 from sentence_transformers import SentenceTransformer, util
 from tqdm.auto import tqdm
 
+# Visibility graph builder import
+from visibility_graph_builder import build_visibility_graph
+
 # ============================================================
 # CONFIG
 # ============================================================
@@ -283,33 +286,8 @@ def main():
     output_dir = config.OUTPUT_DIR / "05_gnn_dataset_v2"
     output_dir.mkdir(exist_ok=True, parents=True)
     
-    # 디버깅 정보
-    print(f"📂 Input dir: {input_dir}")
-    print(f"📂 Exists: {input_dir.exists()}")
-    
     json_files = list(input_dir.glob("*.json"))
     print(f"📁 Found {len(json_files)} JSON files")
-    
-    if len(json_files) == 0:
-        print("\n⚠️  No JSON files found! Trying alternative paths...")
-        # 대체 경로 시도
-        alt_paths = [
-            Path("output/03_output_json_features"),
-            Path("03_output_json_features"),
-            config.OUTPUT_DIR / "03_output_json_features",
-        ]
-        for alt in alt_paths:
-            if alt.exists():
-                files = list(alt.glob("*.json"))
-                print(f"   → {alt}: {len(files)} files")
-                if files:
-                    input_dir = alt
-                    json_files = files
-                    break
-        
-        if not json_files:
-            print("\n❌ Could not find any JSON files. Please check paths.")
-            return
     
     for js in tqdm(json_files, desc="Building graphs"):
         try:
